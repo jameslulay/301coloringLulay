@@ -14,13 +14,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        coloringView sharedView = findViewById(R.id.coloringView1); //the shared coloring View
+        coloringView sharedColoringView = findViewById(R.id.coloringView1); //the shared coloring View
 
-        sharedController = new coloringController(sharedView);
+        sharedController = new coloringController(sharedColoringView);
 
         //create a coloringController object to listen to my touch events
-        coloringController listener = new coloringController(sharedView);
-        sharedView.setOnTouchListener(listener);
+        coloringController colControl = new coloringController(sharedColoringView);
+        sharedColoringView.setOnTouchListener(colControl); //is this correct? What do i attach the listener to.
 
 
 
