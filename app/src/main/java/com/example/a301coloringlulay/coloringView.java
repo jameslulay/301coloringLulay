@@ -18,11 +18,13 @@ public class coloringView extends SurfaceView{
     public CustomCircle circle5;
     public CustomCircle circle6;
 
+
+
     public coloringModel getColoringModel(){
         return sharedModel;
     }
 
-    public coloringView(Context context, AttributeSet attrs) {
+    public coloringView(Context context, AttributeSet attrs) {  //ctor
         super(context, attrs);
         setWillNotDraw(false);
 
@@ -40,7 +42,7 @@ public class coloringView extends SurfaceView{
         circle2 = new CustomCircle("circle2",Color.RED,50,200,50);
         circle2.drawMe(canvas);
 
-        circle3 = new CustomCircle("circle2",Color.RED,50,350,50);
+        circle3 = new CustomCircle("circle2",0x111111,50,350,50);
         circle3.drawMe(canvas);
 
         circle4 = new CustomCircle("circle2",Color.YELLOW,250,50,50);
@@ -51,10 +53,6 @@ public class coloringView extends SurfaceView{
 
         circle6 = new CustomCircle("circle2",Color.RED,250,350,50);
         circle6.drawMe(canvas);
+
     }
-
-
-
-
-
 }

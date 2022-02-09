@@ -7,6 +7,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.view.MotionEvent;
 
+
 public class coloringController implements View.OnClickListener, View.OnTouchListener,
         SeekBar.OnSeekBarChangeListener{
 
@@ -14,12 +15,17 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
     public coloringModel sharedModel;
     public coloringView sharedView;
 
-    public coloringController(coloringView createdColoringView){  //ctor
+
+
+
+
+
+
+    public coloringController(coloringView createdColoringView, TextView viewName, SeekBar red,
+                              SeekBar green, SeekBar blue){  //ctor
 
         sharedView = createdColoringView;
         sharedModel = sharedView.getColoringModel();
-
-
 
     }
 
@@ -47,15 +53,38 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        int x = (int)motionEvent.getX();
-        int y = (int)motionEvent.getY();
+        int xx = (int)motionEvent.getX();
+        int yy = (int)motionEvent.getY();
+
+        if(sharedView.circle6.containsPoint(xx,yy)){
+            sharedModel.textViewString = "Modify Circle 1";
+        }
+        else if (sharedView.circle5.containsPoint(xx, yy)) {
+            sharedModel.textViewString = "Modify Circle 2";
+        }
+        else if (sharedView.circle5.containsPoint(xx, yy)) {
+            sharedModel.textViewString = "Modify Circle 3";
+        }
+        else if (sharedView.circle5.containsPoint(xx, yy)) {
+            sharedModel.textViewString = "Modify Circle 4";
+        }
+        else if (sharedView.circle5.containsPoint(xx, yy)) {
+            sharedModel.textViewString = "Modify Circle 5";
+        }
+        else if (sharedView.circle5.containsPoint(xx, yy)) {
+            sharedModel.textViewString = "Modify Circle 6";
+        }
+        else { sharedModel.textViewString = "select circle";}
 
 
-        //tell the View that it needs to redraw itself
-        //drawing.invalidate();
 
 
 
+
+
+
+
+        //how do i redraw the textview???
         return true;
     }
 }
