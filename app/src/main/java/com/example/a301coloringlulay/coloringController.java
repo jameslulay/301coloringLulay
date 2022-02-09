@@ -1,5 +1,6 @@
 package com.example.a301coloringlulay;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.widget.CompoundButton;
 import android.view.View;
@@ -18,7 +19,12 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
     public coloringView sharedView;
 
     private TextView circleTextBox;
-    private int currentCircleColor;
+    private CustomCircle currentCirc;
+    private int currentColor,currentRed,currentBlue,currentGreen;
+
+
+
+    public SeekBar redSeekCont,greenSeekCont,blueSeekCont;
 
 
 
@@ -59,16 +65,15 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
 
     }
 
+
+
+
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
-
-
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-
     }
 
     @Override
@@ -78,24 +83,39 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
 
         if(sharedView.circle6.containsPoint(xx,yy)){
             sharedModel.textViewString = "Modify Circle 1";
+            currentCirc = sharedView.circle6;
         }
         else if (sharedView.circle5.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 2";
+            currentCirc = sharedView.circle5;
         }
         else if (sharedView.circle4.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 3";
+            currentCirc = sharedView.circle4;
         }
         else if (sharedView.circle3.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 4";
+            currentCirc = sharedView.circle3;
         }
         else if (sharedView.circle2.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 5";
+            currentCirc = sharedView.circle2;
         }
         else if (sharedView.circle1.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 6";
-
+            currentCirc = sharedView.circle1;
         }
         else { sharedModel.textViewString = "select circle";}
+
+        //Updates seekbars to the current circle color;
+
+        currentColor = currentCirc.getColor();
+        currentRed = Color.red(currentColor);
+        currentGreen = Color.green(currentColor);
+        currentBlue = Color.blue(currentColor);
+        redSeekCont.setProgress(currentRed);
+        greenSeekCont.setProgress(currentGreen);
+        blueSeekCont.setProgress(currentBlue);
 
         circleTextBox.setText(sharedModel.textViewString);
         return true;

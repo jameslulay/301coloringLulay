@@ -29,6 +29,10 @@ public class coloringModel {
                circ6Green = 100,
                circ6Blue = 100;
 
+    public String lastCircle;
+
+
+
 
 
 
