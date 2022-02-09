@@ -104,7 +104,7 @@ public abstract class CustomElement {
      * within the bounds of its shape. This is used for tap purposes so a tap
      * that is close to being inside should still count. Use the TAP_MARGIN
      * constant as a guide for fudge factor. When implementing this method, you
-     * may find the {@link android.graphics.Rect.contains} method handy.
+     * may find the {//@link android.graphics.Rect.contains} method handy.
      */
     public abstract boolean containsPoint(int x, int y);
 

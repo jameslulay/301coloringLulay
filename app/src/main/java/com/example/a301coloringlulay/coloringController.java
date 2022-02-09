@@ -7,6 +7,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.view.MotionEvent;
 
+import org.w3c.dom.Text;
+
 
 public class coloringController implements View.OnClickListener, View.OnTouchListener,
         SeekBar.OnSeekBarChangeListener{
@@ -15,22 +17,27 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
     public coloringModel sharedModel;
     public coloringView sharedView;
 
+    private TextView circleTextBox;
+    private int currentCircleColor;
 
 
 
 
 
 
-    public coloringController(coloringView createdColoringView, TextView viewName, SeekBar red,
-                              SeekBar green, SeekBar blue){  //ctor
+
+
+    public coloringController(coloringView createdColoringView, TextView circleTextView,
+                              SeekBar redSeek, SeekBar greenSeek, SeekBar blueSeek){  //ctor
 
         sharedView = createdColoringView;
         sharedModel = sharedView.getColoringModel();
+        circleTextBox = circleTextView;
 
     }
 
     @Override
-    public void onClick(View button) {    //onclick method for "blow out" button.
+    public void onClick(View button) {
 
     }
 
@@ -39,10 +46,23 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 
+
+        if(seekBar.getId() == R.id.redSeekBarxml){
+            sharedModel.tempRedValue = i;
+        }
+        if(seekBar.getId() == R.id.greenSeekBarxml){
+            sharedModel.tempGreenValue = i;
+        }
+        if(seekBar.getId() == R.id.blueSeekBarxml){
+            sharedModel.tempBlueValue = i;
+        }
+
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
+
+
 
     }
 
@@ -62,29 +82,22 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
         else if (sharedView.circle5.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 2";
         }
-        else if (sharedView.circle5.containsPoint(xx, yy)) {
+        else if (sharedView.circle4.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 3";
         }
-        else if (sharedView.circle5.containsPoint(xx, yy)) {
+        else if (sharedView.circle3.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 4";
         }
-        else if (sharedView.circle5.containsPoint(xx, yy)) {
+        else if (sharedView.circle2.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 5";
         }
-        else if (sharedView.circle5.containsPoint(xx, yy)) {
+        else if (sharedView.circle1.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 6";
+
         }
         else { sharedModel.textViewString = "select circle";}
 
-
-
-
-
-
-
-
-
-        //how do i redraw the textview???
+        circleTextBox.setText(sharedModel.textViewString);
         return true;
     }
 }

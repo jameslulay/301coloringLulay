@@ -15,12 +15,15 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_weight="1"
-        android:text="RGB sliders" />
+        android:text="Select_Circle"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -29,7 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Red" />
+            android:text="Red"
+            android:textSize="20sp" />
 
         <SeekBar
             android:id="@+id/redSeekBarxml"
@@ -41,6 +45,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -49,7 +54,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Green" />
+            android:text="Green"
+            android:textSize="20sp" />
 
         <SeekBar
             android:id="@+id/greenSeekBarxml"
@@ -61,6 +67,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -68,8 +75,10 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="Blue" />
+            android:text="Blue"
+            android:textSize="20sp" />
 
         <SeekBar
             android:id="@+id/blueSeekBarxml"

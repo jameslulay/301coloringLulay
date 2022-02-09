@@ -42,7 +42,7 @@ public class coloringView extends SurfaceView{
         circle2 = new CustomCircle("circle2",Color.RED,50,200,50);
         circle2.drawMe(canvas);
 
-        circle3 = new CustomCircle("circle2",0x111111,50,350,50);
+        circle3 = new CustomCircle("circle2",Color.RED,50,350,50);
         circle3.drawMe(canvas);
 
         circle4 = new CustomCircle("circle2",Color.YELLOW,250,50,50);
