@@ -1,40 +1,19 @@
 package com.example.a301coloringlulay;
 
-import android.graphics.Color;
+/**
+ * <!-- class coloringModel-->
+ * This class serves as the program's Model. It's barely used, except for one variable.
+ * @author James Lulay
+ * @version 2/9/2022
+ */
+
+
 
 public class coloringModel {
 
-    public String textViewString = "test tes iiiiii";
-
-    public int tempRedValue,tempGreenValue,tempBlueValue;
-
-    public int currentRGB = Color.rgb(tempRedValue,tempGreenValue,tempBlueValue);
-
-    public int circ1Red = 100,
-               circ1Green = 100,
-               circ1Blue = 100,
-               circ2Red = 100,
-               circ2Green = 100,
-               circ2Blue = 100,
-               circ3Red = 100,
-               circ3Green = 100,
-               circ3Blue = 100,
-               circ4Red = 100,
-               circ4Green = 100,
-               circ4Blue = 100,
-               circ5Red = 100,
-               circ5Green = 100,
-               circ5Blue = 100,
-               circ6Red = 100,
-               circ6Green = 100,
-               circ6Blue = 100;
-
-    public String lastCircle;
-
-
-
-
-
-
+    //this is a string variable used to store what the current textView says. Whenever a circle is
+    //clicked on, this updates. the setText method is called in the MainActivity. By default,
+    //when the program starts, it asks you to modify circle 1.
+    public String textViewString = "Modify Circle 1";
 
 }

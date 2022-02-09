@@ -1,72 +1,74 @@
 package com.example.a301coloringlulay;
 
 import android.graphics.Color;
-import android.util.Log;
-import android.widget.CompoundButton;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.view.MotionEvent;
 
-import org.w3c.dom.Text;
+/**
+ * <!-- class coloringController-->
+ * This class serves as the program's controller. Contains event handling methods
+ * for the seekbar and the surfaceView touch events.
+ *
+ * @author James Lulay
+ * @version 2/9/2022
+ */
 
 
-public class coloringController implements View.OnClickListener, View.OnTouchListener,
-        SeekBar.OnSeekBarChangeListener{
+public class coloringController implements  View.OnTouchListener, SeekBar.OnSeekBarChangeListener{
 
-    //model and view
-    public coloringModel sharedModel;
-    public coloringView sharedView;
+    public coloringModel sharedModel;   //stores Model from ctor
+    public coloringView sharedView;     //stores view from ctor
 
-    private TextView circleTextBox;
-    private CustomCircle currentCirc;
-    private int currentColor,currentRed,currentBlue,currentGreen;
+    private TextView circleTextBox;     //stores TextView from ctor
 
+    private CustomCircle currentCirc;   //The current circle object selected
 
+    //stores the temporary colors of the circle selected.
+    public int currentColor,currentRed,currentBlue,currentGreen;
 
+    //cont is short for controller. This stores the seekbars from the ctor
     public SeekBar redSeekCont,greenSeekCont,blueSeekCont;
 
 
 
-
-
-
-
+    //constructor takes in these parameters and stores them as local variables.
 
     public coloringController(coloringView createdColoringView, TextView circleTextView,
-                              SeekBar redSeek, SeekBar greenSeek, SeekBar blueSeek){  //ctor
+                              SeekBar redSeek, SeekBar greenSeek, SeekBar blueSeek){
 
         sharedView = createdColoringView;
         sharedModel = sharedView.getColoringModel();
-        circleTextBox = circleTextView;
+        circleTextBox = circleTextView; //The textView that represents current obj selected
+        redSeekCont = redSeek;          //Red seekbar
+        greenSeekCont = greenSeek;      //Green seekbar
+        blueSeekCont = blueSeek;        //Blue seekbar
 
+        currentCirc = sharedView.circle1; //upon booting up, it sets the current circle to circle 1
     }
-
-    @Override
-    public void onClick(View button) {
-
-    }
-
-
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 
-
         if(seekBar.getId() == R.id.redSeekBarxml){
-            sharedModel.tempRedValue = i;
+            currentRed = seekBar.getProgress();
         }
         if(seekBar.getId() == R.id.greenSeekBarxml){
-            sharedModel.tempGreenValue = i;
+            currentGreen = seekBar.getProgress();
         }
         if(seekBar.getId() == R.id.blueSeekBarxml){
-            sharedModel.tempBlueValue = i;
+            currentBlue = seekBar.getProgress();
         }
 
+        currentColor = Color.rgb(currentRed,currentGreen,currentBlue);
+        currentCirc.setColor(currentColor);
+
+
+        currentColor = Color.rgb(currentRed,currentGreen,currentBlue);
+        currentCirc.setColor(currentColor);
+        sharedView.invalidate();
     }
-
-
-
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -76,48 +78,60 @@ public class coloringController implements View.OnClickListener, View.OnTouchLis
     public void onStopTrackingTouch(SeekBar seekBar) {
     }
 
+
+    /** The onTouch method determines what circle(or non at all) is selected. It then
+     * updates the textViewString variable in the model so that the display in the textview
+     * shows what object is selected. It then assigns the circle selected with the
+     * local variable currentCirc, then it updates the seekbars to represent the color
+     * of the circle.
+     *
+     */
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         int xx = (int)motionEvent.getX();
         int yy = (int)motionEvent.getY();
 
         if(sharedView.circle6.containsPoint(xx,yy)){
-            sharedModel.textViewString = "Modify Circle 1";
+            sharedModel.textViewString = "Modify Circle 6"; //accesses model,
             currentCirc = sharedView.circle6;
         }
         else if (sharedView.circle5.containsPoint(xx, yy)) {
-            sharedModel.textViewString = "Modify Circle 2";
+            sharedModel.textViewString = "Modify Circle 5";
             currentCirc = sharedView.circle5;
         }
         else if (sharedView.circle4.containsPoint(xx, yy)) {
-            sharedModel.textViewString = "Modify Circle 3";
+            sharedModel.textViewString = "Modify Circle 4";
             currentCirc = sharedView.circle4;
         }
         else if (sharedView.circle3.containsPoint(xx, yy)) {
-            sharedModel.textViewString = "Modify Circle 4";
+            sharedModel.textViewString = "Modify Circle 3";
             currentCirc = sharedView.circle3;
         }
         else if (sharedView.circle2.containsPoint(xx, yy)) {
-            sharedModel.textViewString = "Modify Circle 5";
+            sharedModel.textViewString = "Modify Circle 2";
             currentCirc = sharedView.circle2;
         }
-        else if (sharedView.circle1.containsPoint(xx, yy)) {
-            sharedModel.textViewString = "Modify Circle 6";
+        else {
+            sharedModel.textViewString = "Modify Circle 1";
             currentCirc = sharedView.circle1;
         }
-        else { sharedModel.textViewString = "select circle";}
 
-        //Updates seekbars to the current circle color;
-
+        //Gets the color of the circle selected
         currentColor = currentCirc.getColor();
+        //stores that circle's colors in the current variables
         currentRed = Color.red(currentColor);
         currentGreen = Color.green(currentColor);
         currentBlue = Color.blue(currentColor);
+
+        //sets the rgb seekbars to reflect current circle color
         redSeekCont.setProgress(currentRed);
         greenSeekCont.setProgress(currentGreen);
         blueSeekCont.setProgress(currentBlue);
 
+        //sets the textView to represent the current circle
         circleTextBox.setText(sharedModel.textViewString);
+
+        sharedView.invalidate();
         return true;
     }
 }
