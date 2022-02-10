@@ -15,5 +15,4 @@ public class coloringModel {
     //clicked on, this updates. the setText method is called in the MainActivity. By default,
     //when the program starts, it asks you to modify circle 1.
     public String textViewString = "Modify Circle 1";
-
 }

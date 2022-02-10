@@ -13,7 +13,6 @@ import android.view.SurfaceView;
  *
  * @author Andrew Nuxoll
  * @version Spring 2015
- *
  */
 
 public class coloringView extends SurfaceView{

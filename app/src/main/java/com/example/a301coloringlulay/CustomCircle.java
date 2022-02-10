@@ -31,13 +31,11 @@ public class CustomCircle extends CustomElement {
         this.radius = radius;
     }
 
-
     @Override
     public void drawMe(Canvas canvas) {
         canvas.drawCircle(x, y, radius, myPaint);  //main circle
         canvas.drawCircle(x, y, radius, outlinePaint);  //outline around circle
     }
-
 
     /** for ease of calculation, just draw a box around the circle and see if the point is in that */
     @Override

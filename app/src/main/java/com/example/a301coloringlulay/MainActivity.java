@@ -14,9 +14,9 @@ import android.widget.TextView;
  */
 
 public class MainActivity extends AppCompatActivity {
-
-    coloringController sharedController;
-    coloringModel sharedModel;
+    //stores the model and
+    private coloringController sharedController;
+    private coloringModel sharedModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +51,6 @@ public class MainActivity extends AppCompatActivity {
         redSeekBar.setOnSeekBarChangeListener(sharedController);
         greenSeekBar.setOnSeekBarChangeListener(sharedController);
         blueSeekBar.setOnSeekBarChangeListener(sharedController);
-
-
-
-
-
-
-
-
-
 
     }
 }

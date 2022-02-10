@@ -15,7 +15,6 @@ import android.view.MotionEvent;
  * @version 2/9/2022
  */
 
-
 public class coloringController implements  View.OnTouchListener, SeekBar.OnSeekBarChangeListener{
 
     public coloringModel sharedModel;   //stores Model from ctor
@@ -30,8 +29,6 @@ public class coloringController implements  View.OnTouchListener, SeekBar.OnSeek
 
     //cont is short for controller. This stores the seekbars from the ctor
     public SeekBar redSeekCont,greenSeekCont,blueSeekCont;
-
-
 
     //constructor takes in these parameters and stores them as local variables.
 
@@ -48,6 +45,11 @@ public class coloringController implements  View.OnTouchListener, SeekBar.OnSeek
         currentCirc = sharedView.circle1; //upon booting up, it sets the current circle to circle 1
     }
 
+    /**
+     * This method responds to a seekbar being changed. It scans for the current seekbar
+     * selected, then uses that value to update the corresponding rgb value for the circle.
+     *
+     */
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 
@@ -64,12 +66,12 @@ public class coloringController implements  View.OnTouchListener, SeekBar.OnSeek
         currentColor = Color.rgb(currentRed,currentGreen,currentBlue);
         currentCirc.setColor(currentColor);
 
-
         currentColor = Color.rgb(currentRed,currentGreen,currentBlue);
         currentCirc.setColor(currentColor);
         sharedView.invalidate();
     }
 
+    //can ignore these two methods
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
     }
