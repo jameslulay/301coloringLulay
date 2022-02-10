@@ -1,5 +1,4 @@
 package com.example.a301coloringlulay;
-
 import android.graphics.Canvas;
 import android.graphics.Rect;
 

@@ -64,10 +64,11 @@ public class coloringController implements  View.OnTouchListener, SeekBar.OnSeek
         }
 
         currentColor = Color.rgb(currentRed,currentGreen,currentBlue);
-        currentCirc.setColor(currentColor);
+        //currentCirc.setColor(currentColor);
 
         currentColor = Color.rgb(currentRed,currentGreen,currentBlue);
-        currentCirc.setColor(currentColor);
+        //currentCirc.setColor(currentColor);
+        this.paintObject(X,Y);
         sharedView.invalidate();
     }
 
@@ -88,36 +89,59 @@ public class coloringController implements  View.OnTouchListener, SeekBar.OnSeek
      * of the circle.
      *
      */
+
+
+    public void paintObject(int x, int y){
+        if(sharedView.circle6.containsPoint(x,y) || sharedView.circle5.containsPoint(x,y)){
+            sharedView.circle6.setColor(currentColor);
+            sharedView.circle5.setColor(currentColor);}
+            }
+
+    int X;
+    int Y;
+
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         int xx = (int)motionEvent.getX();
         int yy = (int)motionEvent.getY();
+        X = xx;
+        Y = yy;
 
-        if(sharedView.circle6.containsPoint(xx,yy)){
+        if(sharedView.circle6.containsPoint(xx,yy) || sharedView.circle5.containsPoint(xx,yy)){
             sharedModel.textViewString = "Modify Circle 6"; //accesses model,
             currentCirc = sharedView.circle6;
+            this.setSeekBars();
         }
-        else if (sharedView.circle5.containsPoint(xx, yy)) {
-            sharedModel.textViewString = "Modify Circle 5";
-            currentCirc = sharedView.circle5;
-        }
+        /**
         else if (sharedView.circle4.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 4";
             currentCirc = sharedView.circle4;
+            this.setSeekBars();
         }
         else if (sharedView.circle3.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 3";
             currentCirc = sharedView.circle3;
+            this.setSeekBars();
         }
         else if (sharedView.circle2.containsPoint(xx, yy)) {
             sharedModel.textViewString = "Modify Circle 2";
             currentCirc = sharedView.circle2;
+            this.setSeekBars();
         }
-        else {
+        else if (sharedView.circle1.containsPoint(xx, yy)){
             sharedModel.textViewString = "Modify Circle 1";
             currentCirc = sharedView.circle1;
-        }
+            this.setSeekBars();}
+         **/
 
+        else ;
+
+
+
+        return true;
+    }
+
+    private void setSeekBars(){
         //Gets the color of the circle selected
         currentColor = currentCirc.getColor();
         //stores that circle's colors in the current variables
@@ -134,6 +158,7 @@ public class coloringController implements  View.OnTouchListener, SeekBar.OnSeek
         circleTextBox.setText(sharedModel.textViewString);
 
         sharedView.invalidate();
-        return true;
+
     }
+
 }
