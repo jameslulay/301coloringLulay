@@ -11,8 +11,9 @@ package com.example.a301coloringlulay;
 
 public class coloringModel {
 
-    //this is a string variable used to store what the current textView says. Whenever a circle is
-    //clicked on, this updates. the setText method is called in the MainActivity. By default,
-    //when the program starts, it asks you to modify circle 1.
-    public String textViewString = "Modify Sky";
+    //this is a string variable used to store what the current textView says. Whenever an element is
+    //clicked on, this updates. By default,when the program starts,
+    // it asks you to modify the sky.
+
+    public String textViewString = "Modify Sky"; //hard coded this for startup.
 }

@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
         SeekBar redSeekBar = findViewById(R.id.redSeekBarxml);
         SeekBar greenSeekBar = findViewById(R.id.greenSeekBarxml);
         SeekBar blueSeekBar = findViewById(R.id.blueSeekBarxml);
-        //stores the View(or coloringView)
-        coloringView sharedColoringView = findViewById(R.id.coloringView1); //the shared coloring View
+
+        //the shared coloring View
+        coloringView sharedColoringView = findViewById(R.id.coloringView1);
 
         //initializes a new Controller
         sharedController = new coloringController(sharedColoringView, circleSelectedTextView, redSeekBar,
@@ -40,12 +41,11 @@ public class MainActivity extends AppCompatActivity {
         sharedModel = sharedColoringView.getColoringModel();
 
         //create a coloringController object to listen to my touch events
-        //coloringController colControl = new coloringController(sharedColoringView);
         sharedColoringView.setOnTouchListener(sharedController);
 
         //connects the TextView with a listener
-        TextView circleTextDisplayed = findViewById(R.id.textView5);
-        circleTextDisplayed.setText(sharedModel.textViewString);
+        TextView elementTextDisplayed = findViewById(R.id.textView5);
+        elementTextDisplayed.setText(sharedModel.textViewString);
 
         //sets listener for the seekbars
         redSeekBar.setOnSeekBarChangeListener(sharedController);

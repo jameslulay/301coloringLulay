@@ -16,6 +16,16 @@ import android.graphics.Paint;
  * @version Spring 2015
  *
  */
+
+/**
+ External Citation
+ Date: 2/7/2022
+ Problem: I felt like I could benefit from using starter code to help create
+ objects to draw in my program
+ Resource: Prof Nuxoll's moodle
+ Solution: I used prof's CustomElement starter class as a part of my project.
+ **/
+
 public abstract class CustomElement {
 
     /**

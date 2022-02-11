@@ -14,6 +14,16 @@ import android.graphics.Rect;
  *
  */
 
+/**
+ External Citation
+ Date: 2/7/2022
+ Problem: I felt like I could benefit from using starter code to help create
+ objects to draw in my program
+ Resource: Prof Nuxoll's moodle
+ Solution: I used prof's CustomCircle starter class as a part of my project.
+ **/
+
+
 public class CustomCircle extends CustomElement {
 
     /** these variables define the location and radius of a circle */
